@@ -1,17 +1,60 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Paramètres</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()">
+  <ion-list>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-item>
+      <ion-icon name="apps-outline" slot="start"></ion-icon>
+      <ion-label>
+        <ion-text color="primary">Nombres total de zones</ion-text>
+        <ion-input formControlName="nbZones" type="text" class="custom-textarea" color="success"  placeholder="Nombre de zones à brosser" [clearOnEdit]="true"></ion-input>
+      </ion-label>
+      <ion-note slot="error" *ngIf="isSubmitted && ionicForm.controls['nbZones'].touched">
+        Nombres total de zones doit être renseigné
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="alarm-outline" slot="start"></ion-icon>
+      <ion-label>
+        <ion-text color="primary">Quand changer de zone</ion-text>
+        <ion-input formControlName="waitingTime" type="text" class="custom-textarea" color="success"  placeholder="16sec" [clearOnEdit]="true"></ion-input>
+      </ion-label>
+      <ion-note slot="error" *ngIf="isSubmitted && ionicForm.controls['waitingTime'].touched">
+        Le temps pour changer de zone doit être renseigné
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="hourglass-outline" slot="start"></ion-icon>
+      <ion-label>
+        <ion-text color="primary">Temps d'attente</ion-text>
+        <ion-input formControlName="time" type="number" class="custom-textarea" color="success"  placeholder="6sec" [clearOnEdit]="true"></ion-input>
+      </ion-label>
+      <ion-note slot="error" *ngIf="isSubmitted && ionicForm.controls['time'].touched">
+        Le temps d'attente doit être renseigné
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      <ion-label>
+        <ion-text color="primary">Pour qui ?</ion-text>
+        <ion-input formControlName="name" type="text" class="custom-textarea" color="success" placeholder="mon Petit Marco" [clearOnEdit]="true"></ion-input>
+      </ion-label>
+      <ion-note slot="error" *ngIf="isSubmitted && ionicForm.controls['name'].touched">
+        Le nom doit être renseigné et faire moins de 20 caractères
+      </ion-note>
+    </ion-item>
+
+  </ion-list>
+  <ion-button type="submit" color="success">
+    <ion-icon name="checkmark-circle-outline" ></ion-icon>
+    Save</ion-button>
+  </form>
 </ion-content>

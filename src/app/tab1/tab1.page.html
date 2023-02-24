@@ -1,17 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title size="small">
+      Timer pour {{ name }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <video  width="320" height="320" autoplay muted controls>
+        <source  src="assets/video/brossage-dents.m4v" type="video/x-m4v">
+      </video>
+      <ion-card-title>Timer pour {{ name }}</ion-card-title>
+      <ion-card-subtitle>Des dents saines pour toute la vie !</ion-card-subtitle>
+    </ion-card-header>
+
+    <div class ="timer">
+      <h1>{{ formatTime(timer) }}</h1>
+      <ion-button (click)="startTimer()">
+       <ion-icon  slot="icon-only" name="caret-forward-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="success" (click)="pauseTimer()">
+        <ion-icon slot="icon-only" name="pause-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" (click)="resetTimer()">
+        <ion-icon slot="icon-only" name="refresh-circle-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-card-content>
+      Bienvenue sur Teeth Timer {{ name }} !
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
